@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>Issue Tracker</title>
+	<link rel="stylesheet" type="text/css" href="static/style.css">
+	<!--[if lt IE 9]>
+		<link rel="stylesheet" type="text/css" media="all" href="static/style-ie8-and-down.css"/>
+	<![endif]-->
+
+</head>
+<body>
+	<div id="navbar" class="navbar">
+		<div class="container">
+			<a class="logo-link nav-logo" href="/">
+				Back
+			</a>
+			<a class="title-link" href="/">Issue Tracker</a>
+		</div>
+	</div>
+
+	<div class="container">
+
+		<div class="default-block">
+			<form class="issue-form" action="change" method="post">
+				<label class="label-name">
+					Issue &#35;{{.Bug.Id}}&nbsp;&nbsp;						
+					<input class="input-default" type="text" name="subject" value="{{.Bug.Subject}}"/>
+				</label>
+					
+				<label class="label-status">
+					Status:
+					<select class="select-options input-default" name="status">
+						<option value="0" {{if .Bug.Last}}{{if eq .Bug.Last.Status 0}}selected{{end}}{{end}}>Open</option>
+						<option value="1" {{if .Bug.Last}}{{if eq .Bug.Last.Status 1}}selected{{end}}{{end}}>Fixed</option>
+						<option value="2" {{if .Bug.Last}}{{if eq .Bug.Last.Status 2}}selected{{end}}{{end}}>Closed</option>
+					</select>
+				</label>
+
+				<label class="label-who">
+					Created By:
+					<select class="select-options input-default" name="who">
+						{{range .Users}}
+							<option value="{{.Name}}" {{if $.Bug.Last}}{{if eq $.Bug.Last.ModifiedBy .Name}}selected{{end}}{{end}}>{{.Name}}</option>
+						{{end}}
+					</select>
+				</label>
+
+				<label class="label-comment">
+					Comment:					
+					<textarea class="input-default" name="comment"></textarea>
+				</label>
+				<div class="align-center">
+					<button class="btn-submit" type="submit">Add</button>
+				</div>
+				<input type="hidden" name="id" value="{{.Bug.Id}}"/>
+			</form>	
+		</div>
+
+		<table class="table-log default-block default-table">
+			{{range .Bug.Changes}}
+				<tr>
+					<td>
+						<ul class="issue-log-list">
+							<li class="issue-log-item">{{.ModifiedOn}}</li>
+							<li class="issue-log-item">
+								{{if eq .Status 0}}<span class="badge-open">Open</span>{{end}}
+								{{if eq .Status 1}}<span class="badge-fixed">Fixed</span>{{end}}
+								{{if eq .Status 2}}<span class="badge-closed">Closed</span>{{end}}
+							</li>
+							<li class="issue-log-item">{{.ModifiedBy}}</li>
+							<li class="issue-log-item">{{.Comment}}</li>
+						</ul>
+					</td>
+				</tr>
+			{{end}}
+		</table>
+
+	</div>
+</body>
+</html>
+

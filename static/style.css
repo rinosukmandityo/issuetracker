@@ -1,0 +1,284 @@
+/*
+These files are constructed having in mind the Mobile-first method.
+Values with @ in the comments means that the values are interconnected.
+Each section of the page will be signed, for example: Navbar, Issues table, etc.
+*/
+
+/* ------------ CSS RESET ------------ */
+	* {box-sizing: border-box; margin: 0; padding: 0;}
+	button {border:none; background-color: transparent; cursor: pointer;}
+	a {text-decoration: none;}
+
+/* ------------ GENERAL SETTINGS ------------ */
+	body {
+		background-color: #f3f3f3;
+		font-family: Verdana, Geneva, sans-serif;
+		font-size: 14px;
+		min-width: 320px;
+	}
+
+	label {display: inline-block;}
+
+/* ------------ STYLES CREATED ------------ */
+
+/*Container*/
+	.container {
+		height: 100%;
+		padding: 0px 10px;
+		position: relative;
+		margin: 0 auto;
+		max-width: 900px; /* @container-width */
+	}
+
+/*Helpers*/
+	.align-center {
+		text-align: center;
+		width: 100%;
+	}
+
+	.default-block {
+		background-color: #fff;		
+		border: 1px solid #afd2ca; /* @default-block-border */
+		border-top-width: 4px;
+		margin-bottom: 10px;
+		padding: 5px 10px;
+	}
+
+	.default-table {
+		font-size: 11px;
+		border-collapse: collapse;
+		margin-left: auto;
+		margin-right: auto;
+		max-width: 900px; /* @container-width */
+		width: 100%;
+	}
+
+	.default-table tr {
+		border-bottom: 1px solid #afd2ca;
+	}
+
+	.default-table td {
+		padding: 10px 4px;
+	}
+
+	.input-default {
+		line-height: 20px;
+		border: 1px solid #afd2ca;
+	}
+
+	.btn-submit {
+		background-color: #378f7c;
+		border: 1px solid #afd2ca; /* @default-block-border */
+		border-radius: 3px;
+		color: #fff;
+		padding: 5px;
+	}
+
+	.badge-open {background-color: #207de5;}
+	.badge-fixed {background-color: #6cc644;}
+	.badge-closed {background-color: #fd2a2a;}
+
+	span[class^="badge"] {
+		border-radius: 10px;
+		color: white;
+		font-weight: bold;
+		padding: 4px;
+	}
+
+/* ------------ ROOT.TEMPLATE ------------ */
+
+/*Navbar*/
+	.navbar {
+		background-color: #378f7c;
+		border-bottom: 1px solid #225449;
+		box-shadow: 0px 0px 4px 0px #000;
+		margin-bottom: 10px;
+		height: 60px;  /* @navbar-height */
+		padding: 5px 0px;
+		text-align: center;
+		width: 100%;
+	}
+
+	.navbar a {
+		color: white;
+	}
+
+	.nav-logo {
+		height: 100%;
+	}
+
+	.title-link {
+		display: none;
+		font-weight: bold;
+		line-height: 60px; /* @navbar-height */
+	}
+
+/*Add Issue*/
+	.add-issue {
+		text-align: center;
+		font-size: 15px;
+		margin-left: auto;
+		margin-right: auto;
+		max-width: 900px; /* @container-width */
+		padding: 10px 0;
+	}
+
+	.add-issue > .add-issue-form {
+		margin: 6px 0;
+		display: inline; /*-----------------------------------------*/
+	}
+
+	.add-issue-form > .add-issue-name {
+		line-height: 20px;
+		margin: 5px 0px;
+		padding-left: 3px;
+		width: 80%;
+	}
+
+/*Issues Table*/
+
+	.issue-table a:link {color:#000;}
+	.issue-table a:visited {color:#000;}
+	.issue-table a:hover {color:#000;}
+	.issue-table a:active {color:#888;}
+
+	/*Issue number column*/
+		.issue-table td:first-child {
+			font-weight: bold;		
+			max-width: 33px;
+		}
+
+	/*Issue state badge*/
+		.issue-table td:nth-child(2) {
+			font-weight: bold;		
+			max-width: 40px;
+		}
+
+	/*Issue username */
+		.issue-table td:nth-child(3) {
+			text-align: center;
+		}
+
+	/*Issue name/link*/
+		.issue-table td:nth-child(4) {
+			font-weight: bold;
+			text-align: center;		
+    	overflow: hidden;
+    	max-width: 100px;
+		}
+
+/* ------------ BUG.TEMPLATE ------------ */
+
+/*Issue form - bug.template*/
+	.issue-form > label {
+		margin-bottom: 10px;
+		width: 100%;
+	}
+
+	.select-options {
+		padding: 0px 10px;
+	}
+
+	/*label-name*/
+		.issue-form > .label-name {
+			width: 100%;
+		}
+
+		.label-name > input {
+			line-height: 20px;
+			margin-top: 5px;
+			padding-left: 3px;
+			width: 100%;
+		}
+
+	/*label-status*/
+		.issue-form > .label-status {
+			width: 45%;
+		}
+
+	/*label-who*/
+		.issue-form > .label-who {
+			width: 45%;
+		}
+
+	/*label-comment*/
+		.issue-form > .label-comment {
+			
+		}
+
+		.label-comment > textarea {
+			font-family: inherit;
+			font-size: inherit;
+			margin-top: 5px;
+			min-width: 100%;
+			max-width: 100%;
+			min-height: 100px;
+			padding: 2px 5px;
+		}
+
+/*Issue log*/
+
+	/*Ul of each log*/
+		.issue-log-list {
+			list-style: none;
+			padding: 0px 5px;
+		}
+
+	/*Each item of the Ul*/
+		.issue-log-item {
+			margin-bottom: 10px;
+		}
+
+	/*Log time*/
+		.issue-log-item:first-child {
+			font-weight: bold;
+		}
+
+	/*Log status and Log user*/
+		.issue-log-item:nth-child(2), .issue-log-item:nth-child(3) {
+			display: inline-block;
+		}
+
+	/*Log comment*/
+		.issue-log-item:last-child {
+			margin-bottom: 0;
+		}
+
+@media screen and (min-width: 768px) {
+	.navbar {
+		padding: 0;
+	}
+
+  .nav-logo {
+  	height: 80%;
+  	left: 6px;
+  	top: 20px;
+  	position: absolute;
+  }
+
+  .title-link {
+  	display: inline;
+  }
+
+  .label-name > input {
+		width: 89%;
+	}
+
+	/* FONT RESIZE */
+		.default-block {
+			font-size: 13px;
+		}
+
+}
+ 
+@media screen and (min-width: 992px) {
+	/* FONT RESIZE */
+		.default-block {
+			font-size: 15px;
+		}
+
+}
+ 
+@media screen and (min-width: 1200px) {
+	
+}
