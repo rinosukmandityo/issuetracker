@@ -263,7 +263,7 @@ func main() {
 	http.HandleFunc("/change", handlerChange)
 	http.HandleFunc("/newIssue", handlerNewIssue)
 	http.Handle("/static/", http.StripPrefix("/", http.FileServer(http.Dir("."))))
-	port := ":9000"
+	port := ":80"
 	fmt.Println(fmt.Sprintf("Server running on localhost%s", port))
 	http.ListenAndServe(port, nil)
 }
